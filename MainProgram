@@ -1,0 +1,26 @@
+
+
+
+public class MainProgram {
+    public static void main(String[] args) {
+        ListaContactos listaContactos = new ListaContactos();
+
+        Contacto contacto1 = new ContactoRedeSocial("João", "912345678", "Amigos", "Facebook", "joao@example.com");
+        Contacto contacto2 = new ContactoRedeSocial("Maria", "987654321", "Amigos", "Instagram", "maria@example.com");
+        Contacto contacto3 = new ContactoRedeSocial("Jonathan", "910125200", "Amigos", "Instagram", "jonathanrosadiaz94@gmail.com");
+
+        listaContactos.adicionarContacto(contacto1);
+        listaContactos.adicionarContacto(contacto2);
+        listaContactos.adicionarContacto(contacto3);
+
+        listaContactos.imprimirContactos();
+        listaContactos.imprimirContactosRedesSociais();
+       
+	
+        listaContactos.pesquisarContactoPorNome("João");
+        listaContactos.pesquisarContactoPorNome("Pedro");
+        
+        int numContactosFacebook = listaContactos.contarContactosRedeSocial("Facebook");
+        System.out.println("Número de contactos do Facebook: " + numContactosFacebook);
+    }
+}
