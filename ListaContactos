@@ -1,0 +1,53 @@
+
+import java.util.ArrayList;
+
+public class ListaContactos {
+    private ArrayList<Contacto> contactos;
+
+    public ListaContactos() {
+        this.contactos = new ArrayList<>();
+    }
+
+    public void adicionarContacto(Contacto contacto) {
+        contactos.add(contacto);
+    }
+
+    public void imprimirContactos() {
+        System.out.println("Lista de Contactos:");
+        for (Contacto contacto : contactos) {
+            contacto.imprimirDetalhes();
+        }
+    }
+    
+    public void imprimirContactosRedesSociais() {
+        System.out.println("Contactos de Redes Sociais:");
+        for (Contacto contacto : contactos) {
+            if (contacto instanceof ContactoRedeSocial) {
+                ((ContactoRedeSocial) contacto).imprimirDetalhes();
+            }
+        }
+    }
+
+    public void pesquisarContactoPorNome(String nome) {
+        boolean encontrado = false;
+        for (Contacto contacto : contactos) {
+            if (contacto.getNome().equalsIgnoreCase(nome)) {
+                contacto.imprimirDetalhes();
+                encontrado = true;
+            }
+        }
+        if (!encontrado) {
+            System.out.println("Não existe este contacto.");
+        }
+    }
+
+    public int contarContactosRedeSocial(String redeSocial) {
+        int contador = 0;
+        for (Contacto contacto : contactos) {
+            if (contacto instanceof ContactoRedeSocial && ((ContactoRedeSocial) contacto).getNomeRedeSocial().equalsIgnoreCase(redeSocial)) {
+                contador++;
+            }
+        }
+        return contador;
+    }
+}
